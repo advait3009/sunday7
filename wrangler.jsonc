@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "sunday7",
+  "name": "sunday73",
   "compatibility_date": "2026-05-10",
   "observability": {
     "enabled": true
