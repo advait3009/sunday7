@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dermaroots Skin & Aesthetiq Clinic – Dr. Divya Agarwal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1d6b4f;
+    --green-light: #e8f5ee;
+    --green-mid: #2d9a72;
+    --mint: #f0faf5;
+    --dark: #0d1f17;
+    --grey: #6b7c74;
+    --white: #ffffff;
+    --border: #d4e8dc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: var(--white); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 6%;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon { width: 40px; height: 40px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .logo-text { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--green); }
+  .logo-sub { font-size: 0.65rem; color: var(--grey); letter-spacing: 1px; text-transform: uppercase; }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul a { text-decoration: none; color: var(--dark); font-size: 0.88rem; font-weight: 400; transition: color 0.3s; }
+  nav ul a:hover { color: var(--green); }
+  .nav-btn { background: var(--green); color: #fff; border: none; padding: 11px 26px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.3s; }
+  .nav-btn:hover { background: var(--dark); }
+
+  /* HERO */
+  .hero {
+    padding-top: 80px; min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: var(--mint);
+  }
+  .hero-left { padding: 80px 8% 80px 10%; display: flex; flex-direction: column; justify-content: center; }
+  .hero-tag { display: flex; align-items: center; gap: 8px; margin-bottom: 28px; }
+  .tag-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+  .tag-text { font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--green); font-weight: 500; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.5rem, 4.5vw, 3.8rem); color: var(--dark); line-height: 1.1; margin-bottom: 20px; }
+  .hero h1 span { color: var(--green); font-style: italic; }
+  .hero-desc { font-size: 1rem; color: var(--grey); line-height: 1.9; margin-bottom: 36px; max-width: 460px; font-weight: 300; }
+  .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--green); color: #fff; border: none; padding: 14px 32px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; border-radius: 2px; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; }
+  .btn-primary:hover { background: var(--dark); transform: translateY(-2px); }
+  .btn-ghost { color: var(--green); border: none; background: none; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; gap: 6px; text-decoration: none; }
+  .hero-stats { display: flex; gap: 48px; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .stat-item .num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--green); }
+  .stat-item .label { font-size: 0.78rem; color: var(--grey); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+  .hero-right { position: relative; overflow: hidden; background: var(--green-light); }
+  .doctor-card { position: absolute; bottom: 40px; left: 40px; background: white; padding: 20px 24px; border-radius: 4px; box-shadow: 0 8px 40px rgba(29,107,79,0.12); display: flex; align-items: center; gap: 14px; animation: slideUp 1s ease 0.5s both; }
+  .doctor-avatar-sm { width: 50px; height: 50px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+  .doctor-card-name { font-weight: 500; font-size: 0.9rem; color: var(--dark); }
+  .doctor-card-spec { font-size: 0.75rem; color: var(--green); letter-spacing: 1px; text-transform: uppercase; }
+  .doctor-card-exp { font-size: 0.75rem; color: var(--grey); margin-top: 2px; }
+  .hero-img-placeholder { width: 100%; height: 100%; min-height: 500px; display: flex; align-items: center; justify-content: center; font-size: 8rem; background: linear-gradient(160deg, #d4f0e4 0%, #a8d9c0 100%); }
+  .hero-img-placeholder img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+
+  /* TRUST BAR */
+  .trust-bar { background: var(--green); padding: 24px 8%; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .trust-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.9); font-size: 0.88rem; }
+  .trust-item span:first-child { font-size: 1.4rem; }
+
+  /* DOCTOR PROFILE */
+  .doctor { padding: 100px 10%; display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center; }
+  .doc-img-wrap { position: relative; }
+  .doc-img { width: 100%; aspect-ratio: 3/4; background: linear-gradient(145deg, var(--green-light), #c0e8d2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 7rem; overflow: hidden; }
+  .doc-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+  .doc-badge { position: absolute; top: 28px; left: -28px; background: var(--green); color: #fff; padding: 14px 20px; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; writing-mode: vertical-rl; }
+  .doc-credentials { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .credential { background: var(--green-light); color: var(--green); font-size: 0.75rem; letter-spacing: 1px; padding: 6px 14px; font-weight: 500; }
+  .doc-content .section-label { font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+  .doc-content h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--dark); margin-bottom: 20px; line-height: 1.2; }
+  .doc-content p { font-size: 0.93rem; color: var(--grey); line-height: 1.9; margin-bottom: 16px; font-weight: 300; }
+  .doc-info { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .info-box { padding: 20px; border: 1px solid var(--border); }
+  .info-box .label { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-bottom: 6px; }
+  .info-box .value { font-weight: 500; color: var(--dark); font-size: 0.95rem; }
+
+  /* SERVICES */
+  .services { background: var(--mint); padding: 100px 8%; }
+  .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
+  .services-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); }
+  .services-header a { color: var(--green); font-size: 0.88rem; text-decoration: none; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .service-card { background: var(--white); padding: 40px 32px; border-radius: 4px; transition: all 0.3s; border: 1px solid transparent; cursor: default; }
+  .service-card:hover { border-color: var(--green); transform: translateY(-6px); box-shadow: 0 16px 48px rgba(29,107,79,0.1); }
+  .svc-icon { width: 52px; height: 52px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; transition: background 0.3s; }
+  .service-card:hover .svc-icon { background: var(--green); }
+  .service-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; margin-bottom: 10px; }
+  .service-card p { font-size: 0.86rem; color: var(--grey); line-height: 1.8; }
+  .fee-tag { display: inline-block; background: var(--green-light); color: var(--green); font-size: 0.78rem; padding: 4px 12px; margin-top: 14px; font-weight: 500; }
+
+  /* GALLERY */
+  .gallery { padding: 100px 8%; }
+  .gallery h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 8px; }
+  .gallery-sub { font-size: 0.88rem; color: var(--grey); margin-bottom: 50px; }
+  .gallery-masonry { columns: 3; gap: 16px; }
+  .gal-item { break-inside: avoid; margin-bottom: 16px; background: var(--green-light); border-radius: 4px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+  .gal-item:hover { transform: scale(1.02); }
+  .gal-item:nth-child(1) { height: 280px; }
+  .gal-item:nth-child(2) { height: 200px; }
+  .gal-item:nth-child(3) { height: 240px; }
+  .gal-item:nth-child(4) { height: 220px; }
+  .gal-item:nth-child(5) { height: 300px; }
+  .gal-item:nth-child(6) { height: 180px; }
+  .gal-emoji { font-size: 3.5rem; }
+  .gal-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(13,31,23,0.75); color: #fff; font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; padding: 12px 14px; opacity: 0; transition: opacity 0.3s; }
+  .gal-item:hover .gal-caption { opacity: 1; }
+
+  /* EQUIPMENT */
+  .equipment { padding: 100px 8%; background: var(--dark); color: #fff; }
+  .equipment h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 8px; }
+  .equipment-sub { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 60px; }
+  .equipment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: rgba(255,255,255,0.08); }
+  .equip-cell { background: var(--dark); padding: 40px 28px; transition: background 0.3s; }
+  .equip-cell:hover { background: var(--green); }
+  .equip-num { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: rgba(255,255,255,0.1); margin-bottom: 14px; }
+  .equip-cell h4 { font-size: 1rem; font-weight: 500; margin-bottom: 10px; }
+  .equip-cell p { font-size: 0.83rem; color: rgba(255,255,255,0.55); line-height: 1.8; }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 100px 8%; background: var(--mint); }
+  .testimonials h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 50px; }
+  .testimonial-scroll { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .t-card { background: #fff; padding: 36px; border-radius: 4px; }
+  .t-stars { color: var(--green); font-size: 0.85rem; margin-bottom: 16px; }
+  .t-text { font-size: 0.9rem; color: var(--grey); line-height: 1.9; margin-bottom: 24px; }
+  .t-author { display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .t-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  .t-name { font-weight: 500; font-size: 0.88rem; }
+  .t-loc { font-size: 0.75rem; color: var(--grey); }
+
+  /* BOOKING */
+  .booking { padding: 100px 8%; background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .booking-info h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 20px; }
+  .booking-info p { font-size: 0.92rem; color: var(--grey); line-height: 1.9; margin-bottom: 36px; font-weight: 300; }
+  .contact-list { display: flex; flex-direction: column; gap: 20px; }
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-icon { width: 44px; height: 44px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .contact-detail .label { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-bottom: 4px; }
+  .contact-detail .value { font-weight: 500; font-size: 0.92rem; color: var(--dark); }
+  .booking-form { background: var(--mint); padding: 44px; border-radius: 4px; }
+  .booking-form h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 28px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); margin-bottom: 8px; font-weight: 500; }
+  .form-group input, .form-group select { width: 100%; border: 1px solid var(--border); background: #fff; padding: 12px 16px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--dark); border-radius: 2px; outline: none; transition: border 0.3s; }
+  .form-group input:focus, .form-group select:focus { border-color: var(--green); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .btn-submit { width: 100%; background: var(--green); color: #fff; border: none; padding: 15px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; border-radius: 2px; margin-top: 8px; }
+  .btn-submit:hover { background: var(--dark); }
+
+  /* FAQ */
+  .faq { padding: 100px 8%; background: var(--mint); }
+  .faq h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 50px; text-align: center; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 60px; max-width: 900px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+  .faq-q { cursor: pointer; font-weight: 500; font-size: 0.92rem; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .faq-q span { color: var(--green); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.3s; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s; }
+  .faq-a p { font-size: 0.86rem; color: var(--grey); line-height: 1.9; padding-top: 14px; font-weight: 300; }
+  .faq-item.open .faq-q span { transform: rotate(45deg); }
+  .faq-item.open .faq-a { max-height: 200px; }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: rgba(255,255,255,0.65); padding: 70px 8% 36px; }
+  .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+  .footer-logo { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--green-mid); margin-bottom: 14px; }
+  footer p { font-size: 0.84rem; line-height: 1.9; }
+  footer h5 { color: rgba(255,255,255,0.35); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 18px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 10px; font-size: 0.84rem; }
+  footer ul a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+  footer ul a:hover { color: var(--green-mid); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; display: flex; justify-content: space-between; font-size: 0.78rem; align-items: center; }
+  .security { display: flex; align-items: center; gap: 6px; background: rgba(45,154,114,0.1); border: 1px solid rgba(45,154,114,0.3); padding: 7px 14px; color: var(--green-mid); font-size: 0.72rem; }
+
+  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+  @keyframes slideUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 300px; }
+    .doctor, .booking { grid-template-columns: 1fr; }
+    .services-grid, .testimonial-scroll, .faq-grid { grid-template-columns: 1fr; }
+    .gallery-masonry { columns: 2; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">🌿</div>
+    <div>
+      <div class="logo-text">Dermaroots</div>
+      <div class="logo-sub">Skin & Aesthetiq Clinic</div>
+    </div>
+  </div>
+  <ul>
+    <li><a href="#doctor">Dr. Agarwal</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Appointment</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><div class="tag-dot"></div><div class="tag-text">Now Accepting New Patients • Indirapuram, Ghaziabad</div></div>
+    <h1>Your Skin's Journey to <span>Lasting Health</span></h1>
+    <p class="hero-desc">Expert dermatology and aesthetic care for children and adults. Led by Dr. Divya Agarwal — 9 years of transforming skin, restoring confidence.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary">Book Consultation — ₹700</a>
+      <a href="#services" class="btn-ghost">→ View All Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="num">9+</div><div class="label">Years Experience</div></div>
+      <div class="stat-item"><div class="num">₹700</div><div class="label">Consultation Fee</div></div>
+      <div class="stat-item"><div class="num">3000+</div><div class="label">Patients Treated</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=700&q=80" alt="Dr. Divya Agarwal" onerror="this.style.display='none'">
+      <span style="position:relative;z-index:1">👩‍⚕️</span>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-avatar-sm">👩‍⚕️</div>
+      <div>
+        <div class="doctor-card-name">Dr. Divya Agarwal</div>
+        <div class="doctor-card-spec">Pediatric Dermatologist</div>
+        <div class="doctor-card-exp">9 Years · MBBS, MD (Dermatology)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>✅</span><span>HIPAA & HITECH Compliant</span></div>
+  <div class="trust-item"><span>🔒</span><span>Encrypted Patient Records</span></div>
+  <div class="trust-item"><span>🏥</span><span>ISO Certified Clinic</span></div>
+  <div class="trust-item"><span>🧒</span><span>Paediatric Skin Specialist</span></div>
+  <div class="trust-item"><span>📋</span><span>Online Booking Available</span></div>
+</div>
+
+<!-- DOCTOR PROFILE -->
+<section class="doctor" id="doctor">
+  <div class="doc-img-wrap">
+    <div class="doc-img">
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Dr. Divya Agarwal" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <span style="display:none;font-size:7rem">👩‍⚕️</span>
+    </div>
+    <div class="doc-badge">Dermatologist</div>
+    <div class="doc-credentials">
+      <div class="credential">MBBS</div>
+      <div class="credential">MD – Dermatology</div>
+      <div class="credential">Pediatric Skin</div>
+      <div class="credential">Aesthetic Medicine</div>
+    </div>
+  </div>
+  <div class="doc-content">
+    <div class="section-label">About Your Doctor</div>
+    <h2>Dr. Divya Agarwal — Compassionate Skin Care Expert</h2>
+    <p>Dr. Divya Agarwal brings over 9 years of dedicated dermatological expertise to Dermaroots Skin & Aesthetiq Clinic in Indirapuram, Ghaziabad. Specialising in paediatric dermatology, she is renowned for her gentle, patient-first approach with young patients and their families.</p>
+    <p>Her areas of expertise span medical dermatology (eczema, psoriasis, vitiligo), cosmetic procedures (chemical peels, lasers, fillers) and comprehensive skin care for all age groups. She is committed to evidence-based treatments tailored to each patient's unique needs.</p>
+    <div class="doc-info">
+      <div class="info-box"><div class="label">Experience</div><div class="value">9 Years</div></div>
+      <div class="info-box"><div class="label">Consultation Fee</div><div class="value">₹700</div></div>
+      <div class="info-box"><div class="label">Specialty</div><div class="value">Pediatric Dermatology</div></div>
+      <div class="info-box"><div class="label">Location</div><div class="value">Indirapuram, Ghaziabad</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <div style="font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:8px">What We Treat</div>
+      <h2>Comprehensive Skin Services</h2>
+    </div>
+    <a href="#booking">Book Now →</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card"><div class="svc-icon">🧒</div><h3>Paediatric Dermatology</h3><p>Specialised skin care for infants, children and teens. Treating eczema, rashes, birthmarks, and childhood skin conditions with utmost gentleness.</p><div class="fee-tag">Specialist Care</div></div>
+    <div class="service-card"><div class="svc-icon">🔬</div><h3>Laser Skin Treatments</h3><p>Advanced Q-Switch and Fractional CO2 laser for pigmentation, scar revision, hair removal and skin resurfacing with minimal downtime.</p><div class="fee-tag">Advanced Tech</div></div>
+    <div class="service-card"><div class="svc-icon">💉</div><h3>Aesthetic Injectables</h3><p>Botox, dermal fillers and Platelet-Rich Plasma (PRP) treatments for natural-looking facial rejuvenation and volume restoration.</p><div class="fee-tag">Anti-Ageing</div></div>
+    <div class="service-card"><div class="svc-icon">🌿</div><h3>Acne Management</h3><p>Comprehensive acne programs combining topical treatments, oral medications, chemical peels and dietary guidance for long-term clear skin.</p><div class="fee-tag">Multi-Modal</div></div>
+    <div class="service-card"><div class="svc-icon">☀️</div><h3>Vitiligo & Pigmentation</h3><p>Targeted therapy for vitiligo, melasma and post-inflammatory hyperpigmentation using NBUVB phototherapy and topical depigmenting agents.</p><div class="fee-tag">Specialist</div></div>
+    <div class="service-card"><div class="svc-icon">💆</div><h3>HydraFacial & Peels</h3><p>Medical-grade HydraFacial, glycolic, salicylic and TCA peels for instant skin brightening and deep pore cleansing.</p><div class="fee-tag">Zero Downtime</div></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div style="font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:10px">Visual Tour</div>
+  <h2>Clinic Gallery & Facilities</h2>
+  <p class="gallery-sub">State-of-the-art equipment in a calming, modern environment</p>
+  <div class="gallery-masonry">
+    <div class="gal-item"><div class="gal-emoji">🏥</div><div class="gal-caption">Waiting Area & Reception</div></div>
+    <div class="gal-item"><div class="gal-emoji">🔬</div><div class="gal-caption">Laser Treatment Suite</div></div>
+    <div class="gal-item"><div class="gal-emoji">👶</div><div class="gal-caption">Paediatric Consultation Room</div></div>
+    <div class="gal-item"><div class="gal-emoji">💊</div><div class="gal-caption">In-house Pharmacy</div></div>
+    <div class="gal-item"><div class="gal-emoji">🩺</div><div class="gal-caption">Advanced Diagnostic Suite</div></div>
+    <div class="gal-item"><div class="gal-emoji">✨</div><div class="gal-caption">Aesthetic Treatment Room</div></div>
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+<section class="equipment" id="equipment">
+  <div style="font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--green-mid);margin-bottom:12px">Technology</div>
+  <h2>Advanced Equipment We Use</h2>
+  <p class="equipment-sub">Dermaroots is equipped with the latest FDA-approved devices for precise diagnosis and treatment</p>
+  <div class="equipment-grid">
+    <div class="equip-cell"><div class="equip-num">01</div><h4>Fractional CO₂ Laser</h4><p>Gold-standard scar resurfacing and skin tightening with controlled micro-ablation</p></div>
+    <div class="equip-cell"><div class="equip-num">02</div><h4>NBUVB Phototherapy</h4><p>Narrowband UVB light therapy for vitiligo, psoriasis and other photoresponsive conditions</p></div>
+    <div class="equip-cell"><div class="equip-num">03</div><h4>Q-Switch Nd:YAG Laser</h4><p>Pigmentation, tattoo removal and skin brightening with nano-second pulse technology</p></div>
+    <div class="equip-cell"><div class="equip-num">04</div><h4>Digital Dermatoscope</h4><p>High-resolution mole mapping and early skin cancer detection with AI analysis</p></div>
+    <div class="equip-cell"><div class="equip-num">05</div><h4>HydraFacial MD System</h4><p>Multi-step vortex-fusion cleansing, exfoliation and hydration device</p></div>
+    <div class="equip-cell"><div class="equip-num">06</div><h4>RF Microneedling (Morpheus8)</h4><p>Collagen induction and skin remodelling at precise, customisable depths</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <h2>What Patients Say</h2>
+  <div class="testimonial-scroll">
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">Dr. Divya is absolutely amazing with my daughter's eczema. She explained everything clearly, prescribed the right treatment and now my 4-year-old's skin is completely clear!</p><div class="t-author"><div class="t-avatar">👩</div><div><div class="t-name">Meena Saxena</div><div class="t-loc">Indirapuram, Ghaziabad</div></div></div></div>
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">Had acne scars for years. After 5 sessions of laser treatment, the difference is unbelievable. Dr. Agarwal tailors the treatment to your specific needs. Highly recommended!</p><div class="t-author"><div class="t-avatar">👨</div><div><div class="t-name">Arjun Malhotra</div><div class="t-loc">Vaishali, Ghaziabad</div></div></div></div>
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">The best decision I made was to visit Dermaroots for my vitiligo treatment. The phototherapy sessions have shown remarkable repigmentation. Very professional setup!</p><div class="t-author"><div class="t-avatar">👩</div><div><div class="t-name">Sunita Pandey</div><div class="t-loc">Kaushambi, Ghaziabad</div></div></div></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-info">
+    <div style="font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:12px">Get In Touch</div>
+    <h2>Book Your Consultation</h2>
+    <p>Ready to start your skin transformation? Schedule an appointment with Dr. Divya Agarwal at Dermaroots Skin & Aesthetiq Clinic, Indirapuram.</p>
+    <div class="contact-list">
+      <div class="contact-item"><div class="contact-icon">📍</div><div class="contact-detail"><div class="label">Address</div><div class="value">Indirapuram, Ghaziabad, UP</div></div></div>
+      <div class="contact-item"><div class="contact-icon">🕐</div><div class="contact-detail"><div class="label">Hours</div><div class="value">Mon – Sat: 10 AM – 7 PM</div></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div class="contact-detail"><div class="label">Booking</div><div class="value">Via Practo Online Platform</div></div></div>
+      <div class="contact-item"><div class="contact-icon">💰</div><div class="contact-detail"><div class="label">Consultation Fee</div><div class="value">₹700</div></div></div>
+    </div>
+  </div>
+  <div class="booking-form">
+    <h3>Request an Appointment</h3>
+    <div class="form-row">
+      <div class="form-group"><label>First Name</label><input type="text" placeholder="Priya"></div>
+      <div class="form-group"><label>Last Name</label><input type="text" placeholder="Singh"></div>
+    </div>
+    <div class="form-group"><label>Phone</label><input type="tel" placeholder="+91 99999 00000"></div>
+    <div class="form-group"><label>Patient Type</label>
+      <select><option>Adult Patient</option><option>Child / Paediatric</option><option>Infant (0–2 years)</option></select>
+    </div>
+    <div class="form-group"><label>Concern</label>
+      <select><option>Acne & Breakouts</option><option>Eczema / Rashes</option><option>Pigmentation</option><option>Vitiligo</option><option>Anti-Ageing</option><option>Hair & Scalp</option><option>Other</option></select>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Date</label><input type="date"></div>
+      <div class="form-group"><label>Time</label><select><option>10 AM</option><option>11 AM</option><option>12 PM</option><option>2 PM</option><option>3 PM</option><option>5 PM</option><option>6 PM</option></select></div>
+    </div>
+    <button class="btn-submit">Schedule Appointment →</button>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-grid">
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is Dermaroots suitable for children? <span>+</span></div><div class="faq-a"><p>Absolutely. Dr. Divya Agarwal is a paediatric dermatologist with extensive experience in treating infants, children and teenagers for all skin conditions.</p></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What should I bring to my first appointment? <span>+</span></div><div class="faq-a"><p>Bring previous prescriptions, allergy records, any skin photos, and avoid applying makeup or heavy creams to the affected area before visiting.</p></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How many sessions of laser do I need? <span>+</span></div><div class="faq-a"><p>Typically 4–8 sessions depending on the condition. Dr. Agarwal will create a personalised plan during your initial consultation.</p></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is patient data kept confidential? <span>+</span></div><div class="faq-a"><p>Yes. We follow strict HIPAA and HITECH guidelines. All patient data is encrypted, securely stored and never shared without written consent.</p></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div><div class="footer-logo">Dermaroots Clinic</div><p>Paediatric and general dermatology in Indirapuram, Ghaziabad. Led by Dr. Divya Agarwal — compassionate skin care for all ages.</p></div>
+    <div><h5>Treatments</h5><ul><li><a href="#">Paediatric Skin</a></li><li><a href="#">Laser Therapy</a></li><li><a href="#">Acne Treatment</a></li><li><a href="#">Aesthetic Injectables</a></li></ul></div>
+    <div><h5>Clinic Info</h5><ul><li>Indirapuram, Ghaziabad</li><li>Mon–Sat: 10am–7pm</li><li>Fee: ₹700</li><li>Booking via Practo</li></ul></div>
+    <div><h5>Legal</h5><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Patient Rights</a></li><li><a href="#">Disclaimer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Dermaroots Skin & Aesthetiq Clinic. Dr. Divya Agarwal.</span>
+    <div class="security">🔒 HIPAA Compliant • Encrypted Data</div>
+  </div>
+</footer>
+
+</body>
+</html>
